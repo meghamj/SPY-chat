@@ -1,5 +1,9 @@
 from Select_friend import Select_friend
 from add_status import add_status
+from add_friend import add_friend
+from Send_message import send_message
+from read_message import read_message
+from read_chat_history import read_chat_history
 
 def start_chat(name,age,rating,status):
     from globals import current_status_messages
@@ -22,12 +26,36 @@ def start_chat(name,age,rating,status):
             "5.Read chat frm a user \n" \
             "6.Close application \n"
         result = int(input(menu_choices))
-    if (result == 1):
-         current_status_messages= add_status(current_status_messages)
-    elif (result == 6):
-        show_menu = False
-    else:
-        print "error"
-
+        # validating user input
+        if (result == 1):
+            current_status_messages = add_status(current_status_messages)
+        elif (result == 2):
+            number_of_friend = add_friend()
+            print "You have %d friends" % (number_of_friend)
+        elif (result == 3):
+            send_message()
+        elif (result == 4):
+            read_message()
+        elif (result == 5):
+            read_chat_history()
+        elif (result == 6):
+            show_menu = False
+        else:
+            cprint('Wrong choice entered please try again *_* ', 'red', attrs=['bold'])#validating user input
+            if (result == 1):
+                current_status_messages = add_status(current_status_messages)
+            elif (result == 2):
+                number_of_friend = add_friend()
+                print "You have %d friends" % (number_of_friend)
+            elif (result == 3):
+                send_message()
+            elif (result == 4):
+                read_message()
+            elif (result == 5):
+                read_chat_history()
+            elif (result == 6):
+                show_menu = False
+            else:
+                cprint ('Wrong choice entered please try again *_* ','red',attrs=['bold'])
 
 
